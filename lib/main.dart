@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'explore_page.dart';
+import 'package:jurnalku_trio/permintaan_saksi.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ExplorePage(),
+      home: PermintaanSaksi(),
     );
   }
 }
