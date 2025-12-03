@@ -6,52 +6,50 @@ class PermintaanSaksi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  backgroundColor: Colors.white,
-  leading: Icon(Icons.home_outlined, color: Colors.black),
-  actions: [
-    Padding(
-      padding: EdgeInsets.only(right: 30, top: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            "Ayu Sekar Azzkya",
-            style: GoogleFonts.inter(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
+        backgroundColor: Colors.white,
+        leading: Icon(Icons.home_outlined, color: Colors.black),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 30, top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Ayu Sekar Azzkya",
+                  style: GoogleFonts.inter(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  "PPLG XII-3",
+                  style: GoogleFonts.inter(
+                    fontSize: 11,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ],
             ),
           ),
-          Text(
-            "PPLG XII-3",
-            style: GoogleFonts.inter(
-              fontSize: 11,
-              color: Colors.blueGrey,
+          // Avatar
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.grey[300],
+              child: Icon(Icons.person, color: Colors.white),
             ),
           ),
         ],
       ),
-    ),
-    // Avatar
-    Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: CircleAvatar(
-        radius: 20,
-        backgroundColor: Colors.grey[300],
-        child: Icon(Icons.person, color: Colors.white),
-      ),
-    ),
-  ],
-),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15,horizontal: 25),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                ),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween),
                 SizedBox(height: 5),
                 Text(
                   "Permintaan Saksi",
@@ -90,10 +88,7 @@ class PermintaanSaksi extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: Colors.grey.shade300,
-                      width: 1.2,
-                    ),
+                    border: Border.all(color: Colors.grey.shade300, width: 1.2),
                   ),
                   child: Column(
                     children: [
