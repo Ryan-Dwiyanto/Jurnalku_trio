@@ -1,5 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:jurnalku_trio/dashboard_page.dart';
+import 'package:jurnalku_trio/login_page.dart';
+import 'package:jurnalku_trio/profil_page.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
