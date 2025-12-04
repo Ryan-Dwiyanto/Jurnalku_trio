@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PermintaanSaksi extends StatelessWidget {
+  final List<Map<String, String>> data = [
+    {
+      "nama": "Aqila Hanin Nailah",
+      "tanggal": "20 Nov 2025",
+      "catatan": "Meminta Anda menjadi saksi dalam kasus tertentu.",
+      "status": "Pending",
+    },
+    {
+      "nama": "Malika Maharani Putri Soekanto",
+      "tanggal": "18 Nov 2025",
+      "catatan": "Meminta saksi pada kasus pelanggaran ringan.",
+      "status": "Pending",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +46,6 @@ class PermintaanSaksi extends StatelessWidget {
               ],
             ),
           ),
-          // Avatar
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: CircleAvatar(
@@ -42,6 +56,7 @@ class PermintaanSaksi extends StatelessWidget {
           ),
         ],
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -49,8 +64,6 @@ class PermintaanSaksi extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween),
-                SizedBox(height: 5),
                 Text(
                   "Permintaan Saksi",
                   style: GoogleFonts.inter(
@@ -67,6 +80,7 @@ class PermintaanSaksi extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
+
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   decoration: BoxDecoration(
@@ -82,7 +96,9 @@ class PermintaanSaksi extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(height: 25),
+
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -114,7 +130,6 @@ class PermintaanSaksi extends StatelessWidget {
                                   "PENGIRIM",
                                   style: GoogleFonts.inter(
                                     fontSize: 14,
-                                    letterSpacing: 0.5,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey[700],
                                   ),
@@ -127,7 +142,6 @@ class PermintaanSaksi extends StatelessWidget {
                                   "TANGGAL",
                                   style: GoogleFonts.inter(
                                     fontSize: 14,
-                                    letterSpacing: 0.5,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey[700],
                                   ),
@@ -140,7 +154,6 @@ class PermintaanSaksi extends StatelessWidget {
                                   "KONFIRMASI",
                                   style: GoogleFonts.inter(
                                     fontSize: 14,
-                                    letterSpacing: 0.5,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey[700],
                                   ),
@@ -151,38 +164,96 @@ class PermintaanSaksi extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: 45),
-                      Column(
-                        children: [
-                          Icon(
-                            Icons.group_outlined,
-                            size: 58,
-                            color: Colors.grey[400],
+                      ...data.map((item) {
+                        return ExpansionTile(
+                          tilePadding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
                           ),
-                          SizedBox(height: 16),
-                          Text(
-                            "Belum ada permintaan",
-                            style: GoogleFonts.inter(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
+                          childrenPadding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
                           ),
-                          SizedBox(height: 6),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
-                            child: Text(
-                              "Belum ada yang mengirim permintaan saksi kepada Anda",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                color: Colors.grey[600],
-                                height: 1.4,
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  item["nama"]!,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                child: Text(
+                                  item["tanggal"]!,
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  item["status"]!,
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 35),
-                        ],
-                      ),
+
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Catatan:",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 6),
+                                Text(
+                                  item["catatan"]!,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                  ),
+                                ),
+
+                                SizedBox(height: 14),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.red,
+                                      ),
+                                      child: Text("Tolak", style: TextStyle(color: Colors.white)),
+                                    ),
+                                    SizedBox(width: 10),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.green,
+                                      ),
+                                      child: Text("Terima", style: TextStyle(color: Colors.white)),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      }).toList(),
                     ],
                   ),
                 ),

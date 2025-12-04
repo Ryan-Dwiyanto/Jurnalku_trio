@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_trio/permintaan_saksi.dart';
-import 'package:jurnalku_trio/portofolio.dart';
+import 'package:jurnalku_trio/catatan_sikap.dart';
 
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Portofolio(),
+      home: PermintaanSaksi(),
     );
   }
 }
