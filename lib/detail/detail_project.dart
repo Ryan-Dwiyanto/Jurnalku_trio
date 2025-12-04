@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_trio/profil_page.dart';
 
 class DetailProject extends StatelessWidget {
   const DetailProject({super.key});
@@ -14,9 +15,34 @@ class DetailProject extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Detail Project",
-                style: GoogleFonts.lato(fontSize: 22, fontWeight: FontWeight.w600),
+              Row(
+                children: [
+                  Text(
+                    "Detail Project",
+                    style: GoogleFonts.lato(fontSize: 22, fontWeight: FontWeight.w600),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(10),
+                  elevation: 0,
+                  backgroundColor: Colors.blue[900],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage()));
+                }, 
+                child: Row(
+                  children: [
+                    Icon(Icons.arrow_back, size: 16, color: Colors.white,),
+                    const SizedBox(width: 5,),
+                    Text("Kembali", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white))
+                  ]
+                )
+              )
+                ],
               ),
               const SizedBox(height: 10,),
               Container(
