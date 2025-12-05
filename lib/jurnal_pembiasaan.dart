@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_trio/materi_page.dart';
+import 'package:jurnalku_trio/pekerjaan_page.dart';
 
 class JurnalPembiasaan extends StatelessWidget {
   const JurnalPembiasaan({super.key});
@@ -229,13 +231,13 @@ class JurnalPembiasaan extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 200,
+                // height: 200,
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: ListView(
+                child: Column(
                   children: [
                     Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
@@ -247,7 +249,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 12 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -268,7 +270,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 13 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -279,7 +281,7 @@ class JurnalPembiasaan extends StatelessWidget {
                       ),
                     ),
 
-                                        Card(
+                    Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       elevation: 2,
                       child: ExpansionTile(
@@ -289,7 +291,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 13 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -302,33 +304,62 @@ class JurnalPembiasaan extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  borderRadius: BorderRadius.circular(8),
-                  // border: Border.all(color: Colors.),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[700],
+                    borderRadius: BorderRadius.circular(8),
+                    // border: Border.all(color: Colors.),
+                  ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Tambah Pekerjaan",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Tambah Pekerjaan",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white
-                      ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PekerjaanPage()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 5),
+                        Text(
+                          "Lainnya",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.blue,
+                          size: 15,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               SizedBox(height: 30),
@@ -341,13 +372,13 @@ class JurnalPembiasaan extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 200,
+                // height: 200,
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: ListView(
+                child: Column(
                   children: [
                     Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
@@ -411,33 +442,62 @@ class JurnalPembiasaan extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  borderRadius: BorderRadius.circular(8),
-                  // border: Border.all(color: Colors.),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blue[700],
+                      borderRadius: BorderRadius.circular(8),
+                      // border: Border.all(color: Colors.),
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Tambah Materi",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Tambah Materi",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MateriPage()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 5),
+                        Text(
+                          "Lainnya",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.blue,
+                          size: 15,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 7),
               Row(

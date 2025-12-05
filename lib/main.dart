@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_trio/jurnal_pembiasaan.dart';
 import 'package:jurnalku_trio/panduan_page.dart';
+import 'package:jurnalku_trio/pekerjaan_page.dart';
 import 'package:jurnalku_trio/progress_page.dart';
 import 'explore_page.dart';
 
