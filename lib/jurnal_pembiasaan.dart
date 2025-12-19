@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_trio/materi_page.dart';
 import 'package:jurnalku_trio/pekerjaan_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class JurnalPembiasaan extends StatelessWidget {
   const JurnalPembiasaan({super.key});
@@ -8,63 +9,151 @@ class JurnalPembiasaan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.home,
-            color: Colors.black,
-            size: 30,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Muhammad Ilham Awaludin",
-                      style: TextStyle(
-                        // color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      "PPLG XII-3",
-                      style: TextStyle(
-                        // color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ]
-                ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1), // warna shadow
+                blurRadius: 6, // seberapa blur
+                offset: const Offset(0, 3), // posisi shadow (0 = center horizontally, 3 = downward)
               ),
-              SizedBox(width: 10),
-              // Gambar profil di kanan
+            ],
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+
+            title: Row(
+              children: const [
+                Icon(Icons.home),
+                SizedBox(width: 10),
+              ],
+            ),
+
+            actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/user.png",
-                    width: 35,
-                    height: 35,
-                    fit: BoxFit.cover,
-                  ),
+                padding: const EdgeInsets.only(right: 16),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Muhammad Ryan Dwiyanto",
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "PPLG XII-3",
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 10),
+                    Builder(
+                      builder: (context) => GestureDetector(
+                        onTap: () {
+                          Scaffold.of(context).openEndDrawer(); // ✅
+                        },
+                        child: const CircleAvatar(radius: 20),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ],
+        ),
+      ),
+
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Dashboard"),
+              onTap: () {
+                Navigator.pushNamed(context, "/dashboard");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle_outlined),
+              title: Text("Profile"),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.explore_outlined),
+              title: Text("Jelajahi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/explore");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Jurnal Pembiasaan"),
+              onTap: () {
+                Navigator.pushNamed(context, "/jurnal-pembiasaan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle),
+              title: Text("Permintaan Saksi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/permmintaan-saksi");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.stacked_line_chart_sharp),
+              title: Text("Progress"),
+              onTap: () {
+                Navigator.pushNamed(context, "/progress");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.warning_amber_outlined),
+              title: Text("Catatan Sikap"),
+              onTap: () {
+                Navigator.pushNamed(context, "/catatan-sikap");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Panduan Pengguna"),
+              onTap: () {
+                Navigator.pushNamed(context, "/panduan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings_outlined),
+              title: Text("Pengaturan Akun"),
+              onTap: () {
+                Navigator.pushNamed(context, "/pengaturan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log Out"),
+              onTap: () {
+                Navigator.pushNamed(context, "/login");
+              },
+            ),
+          ],
+        ),
       ),
 
       body: SingleChildScrollView(
