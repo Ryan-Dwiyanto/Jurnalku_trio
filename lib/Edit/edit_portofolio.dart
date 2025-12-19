@@ -108,7 +108,9 @@ class _EditPortofolioState extends State<EditPortofolio> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                          page: 1,
+                        )));
                       }, 
                       child: Text("Batal", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey[600]),)
                     ),

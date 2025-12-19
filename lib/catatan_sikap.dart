@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_trio/catatan_detail.dart';
+import 'package:jurnalku_trio/dashboard_page.dart';
 
 class CatatanSikapData {
   final int no;
@@ -67,7 +68,9 @@ class CatatanSikap extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.home_outlined, color: Colors.black),
+        leading: IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage()));
+        }, icon: Icon(Icons.home_outlined, color: Colors.black)),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 30, top: 10),

@@ -129,7 +129,9 @@ class _EditSocialMediaState extends State<EditSocialMedia> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                          page: 0,
+                        )));
                       }, 
                       child: Text("Simpan", style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600)),
                     ),

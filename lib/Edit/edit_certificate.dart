@@ -83,7 +83,9 @@ class _EditCertificateState extends State<EditCertificate> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                          page: 2,
+                        )));
                       }, 
                       child: Text("Batal", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey[600]),)
                     ),

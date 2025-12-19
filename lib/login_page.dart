@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:jurnalku_trio/dashboard_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -53,7 +54,9 @@ class LoginPage extends StatelessWidget {
                       ),
                       SizedBox(height: 24,),
                       ElevatedButton(
-                        onPressed: (){}, 
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardPage()));
+                        }, 
                         style: ElevatedButton.styleFrom(
                           minimumSize: Size(double.infinity, 48),
                           backgroundColor: Colors.blue[900],

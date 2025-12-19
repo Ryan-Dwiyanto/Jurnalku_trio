@@ -84,7 +84,9 @@ class _ShareProfileState extends State<ShareProfile> {
                     ),
                   ),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                      page: 0,
+                    )));
                   }, 
                   child: Text("Kembali", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey[600]),)
                 )

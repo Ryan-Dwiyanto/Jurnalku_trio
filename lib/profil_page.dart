@@ -11,12 +11,13 @@ import 'package:jurnalku_trio/Edit/edit_social_media.dart';
 import 'package:jurnalku_trio/Input/input_certificate.dart';
 import 'package:jurnalku_trio/Input/input_portofolio.dart';
 import 'package:jurnalku_trio/constant/text_constants.dart';
+import 'package:jurnalku_trio/dashboard_page.dart';
 import 'package:jurnalku_trio/detail/detail_project.dart';
 import 'package:jurnalku_trio/share/share_profile.dart';
 
 class ProfilPage extends StatefulWidget {
-  const ProfilPage({super.key});
-
+  ProfilPage({Key? key, required this.page}) : super(key: key);
+  int page;
   @override
   State<ProfilPage> createState() => _ProfilPageState();
 }
@@ -32,8 +33,10 @@ class _ProfilPageState extends State<ProfilPage>
       setState(() {});
     });
     super.initState();
+    if (widget.page  > 0) {
+    tabController.animateTo(widget.page);
+    }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,12 @@ class _ProfilPageState extends State<ProfilPage>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(Icons.home),
+                IconButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const DashboardPage()));
+                }, 
+                icon:Icon(Icons.home),
+                ),
                 const SizedBox(width: 10),
                 Row(
                   children: [

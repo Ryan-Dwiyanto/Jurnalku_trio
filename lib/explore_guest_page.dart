@@ -4,14 +4,14 @@ import 'package:jurnalku_trio/dashboard_page.dart';
 import 'package:jurnalku_trio/login_page.dart';
 import 'package:jurnalku_trio/profil_page.dart';
 
-class ExplorePage extends StatefulWidget {
-  const ExplorePage({super.key});
+class ExploreGuestPage extends StatefulWidget {
+  const ExploreGuestPage({super.key});
 
   @override
-  State<ExplorePage> createState() => _ExplorePageState();
+  State<ExploreGuestPage> createState() => _ExploreGuestPageState();
 }
 
-class _ExplorePageState extends State<ExplorePage> {
+class _ExploreGuestPageState extends State<ExploreGuestPage> {
   // ---------------------------
   // DATA DUMMY
   // ---------------------------
@@ -65,7 +65,6 @@ class _ExplorePageState extends State<ExplorePage> {
         backgroundColor: Colors.white,
         elevation: 2,
         titleSpacing: 0,
-        automaticallyImplyLeading: false,
         title: Row(
           children: [
             SizedBox(width: 12),
@@ -96,11 +95,11 @@ class _ExplorePageState extends State<ExplorePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DashboardPage()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 child: const Text(
-                  "Dashboard",
+                  "Login",
                   style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ),
@@ -118,14 +117,14 @@ class _ExplorePageState extends State<ExplorePage> {
           SizedBox(
             height: showFilter
                 ? 700
-                : 300, 
+                : 300, // Tinggi dinamis berdasarkan showFilter
             width: double.infinity,
             child: Stack(
               alignment: Alignment.center,
               children: [
                 // Background image
                 Container(
-                  height: showFilter ? 700 : 300,
+                  height: showFilter ? 700 : 300, // Tinggi dinamis
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/Banner-Web.jpg"),

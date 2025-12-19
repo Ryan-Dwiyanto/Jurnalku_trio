@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_trio/catatan_sikap.dart';
+import 'package:jurnalku_trio/explore_page.dart';
+import 'package:jurnalku_trio/jurnal_pembiasaan.dart';
+import 'package:jurnalku_trio/permintaan_saksi.dart';
+import 'package:jurnalku_trio/profil_page.dart';
+import 'package:jurnalku_trio/progress_page.dart';
 
 
 class DashboardPage extends StatelessWidget {
@@ -32,7 +38,12 @@ class DashboardPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(Icons.home),
+                IconButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ExplorePage()));
+                }, 
+                icon:Icon(Icons.home),
+                ),
                 const SizedBox(width: 10),
                 Row(
                   children: [
@@ -295,7 +306,11 @@ class DashboardPage extends StatelessWidget {
                   child: Column(
                     children: [
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                            page: 0,
+                          )));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -336,7 +351,11 @@ class DashboardPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                            page: 1,
+                          )));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -377,7 +396,11 @@ class DashboardPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilPage(
+                            page: 2,
+                          )));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -427,7 +450,9 @@ class DashboardPage extends StatelessWidget {
                   child: Column(
                     children: [
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => JurnalPembiasaan()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -468,7 +493,9 @@ class DashboardPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PermintaanSaksi()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -492,7 +519,7 @@ class DashboardPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text("Permintaan Aksi", style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600),),
+                                    Text("Permintaan Saksi", style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600),),
                                     Text("Lihat teman yang mengajukan permintaan saksi.", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey[700]), softWrap: true,),
                                   ],
                                 ),
@@ -509,7 +536,9 @@ class DashboardPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProgressPage()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -550,7 +579,9 @@ class DashboardPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10,),
                       ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CatatanSikap()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           elevation: 0,
@@ -574,7 +605,7 @@ class DashboardPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text("Sertifikat", style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600),),
+                                    Text("Catatan Sikap", style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600),),
                                     Text("Lihat dan unduh sertifikat kompetensimu di sini.", style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey[700]), softWrap: true,),
                                   ],
                                 ),
