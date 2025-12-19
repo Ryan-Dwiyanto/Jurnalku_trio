@@ -32,8 +32,9 @@ class DashboardPage extends StatelessWidget {
           child: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
+            elevation: 0,
             scrolledUnderElevation: 0,
-            elevation: 0, // agar tidak ada shadow default
+
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,31 +49,33 @@ class DashboardPage extends StatelessWidget {
                 Row(
                   children: [
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
                           "Muhammad Ryan Dwiyanto",
                           style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         Text(
                           "PPLG XII-3",
                           style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                            ),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(width: 10),
-                    const CircleAvatar(
-                      radius: 20,
+                    Builder(
+                      builder: (context) => GestureDetector(
+                        onTap: () {
+                          Scaffold.of(context).openEndDrawer(); // ✅
+                        },
+                        child: const CircleAvatar(radius: 20),
+                      ),
                     ),
                   ],
                 ),
@@ -81,6 +84,86 @@ class DashboardPage extends StatelessWidget {
           ),
         ),
       ),
+
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Dashboard"),
+              onTap: () {
+                Navigator.pushNamed(context, "/dashboard");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle_outlined),
+              title: Text("Profile"),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.explore_outlined),
+              title: Text("Jelajahi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/explore");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Jurnal Pembiasaan"),
+              onTap: () {
+                Navigator.pushNamed(context, "/jurnal-pembiasaan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle),
+              title: Text("Permintaan Saksi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/permmintaan-saksi");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.stacked_line_chart_sharp),
+              title: Text("Progress"),
+              onTap: () {
+                Navigator.pushNamed(context, "/progress");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.warning_amber_outlined),
+              title: Text("Catatan Sikap"),
+              onTap: () {
+                Navigator.pushNamed(context, "/catatan-sikap");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Panduan Pengguna"),
+              onTap: () {
+                Navigator.pushNamed(context, "/panduan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings_outlined),
+              title: Text("Pengaturan Akun"),
+              onTap: () {
+                Navigator.pushNamed(context, "/pengaturan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log Out"),
+              onTap: () {
+                Navigator.pushNamed(context, "/login");
+              },
+            ),
+          ],
+        ),
+      ),
+
       body: ListView(
         children: [
           Container(

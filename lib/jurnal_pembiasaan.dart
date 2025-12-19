@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_trio/materi_page.dart';
+import 'package:jurnalku_trio/pekerjaan_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class JurnalPembiasaan extends StatelessWidget {
   const JurnalPembiasaan({super.key});
@@ -6,63 +9,151 @@ class JurnalPembiasaan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.home,
-            color: Colors.black,
-            size: 30,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "Muhammad Ilham Awaludin",
-                      style: TextStyle(
-                        // color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      "PPLG XII-3",
-                      style: TextStyle(
-                        // color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ]
-                ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1), // warna shadow
+                blurRadius: 6, // seberapa blur
+                offset: const Offset(0, 3), // posisi shadow (0 = center horizontally, 3 = downward)
               ),
-              SizedBox(width: 10),
-              // Gambar profil di kanan
+            ],
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+
+            title: Row(
+              children: const [
+                Icon(Icons.home),
+                SizedBox(width: 10),
+              ],
+            ),
+
+            actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/user.png",
-                    width: 35,
-                    height: 35,
-                    fit: BoxFit.cover,
-                  ),
+                padding: const EdgeInsets.only(right: 16),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Muhammad Ryan Dwiyanto",
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "PPLG XII-3",
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 10),
+                    Builder(
+                      builder: (context) => GestureDetector(
+                        onTap: () {
+                          Scaffold.of(context).openEndDrawer(); // ✅
+                        },
+                        child: const CircleAvatar(radius: 20),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ],
+        ),
+      ),
+
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Dashboard"),
+              onTap: () {
+                Navigator.pushNamed(context, "/dashboard");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle_outlined),
+              title: Text("Profile"),
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.explore_outlined),
+              title: Text("Jelajahi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/explore");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Jurnal Pembiasaan"),
+              onTap: () {
+                Navigator.pushNamed(context, "/jurnal-pembiasaan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle),
+              title: Text("Permintaan Saksi"),
+              onTap: () {
+                Navigator.pushNamed(context, "/permmintaan-saksi");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.stacked_line_chart_sharp),
+              title: Text("Progress"),
+              onTap: () {
+                Navigator.pushNamed(context, "/progress");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.warning_amber_outlined),
+              title: Text("Catatan Sikap"),
+              onTap: () {
+                Navigator.pushNamed(context, "/catatan-sikap");
+              },
+            ),
+            Divider(color: Colors.grey, height: 1),
+            ListTile(
+              leading: Icon(Icons.menu_book_sharp),
+              title: Text("Panduan Pengguna"),
+              onTap: () {
+                Navigator.pushNamed(context, "/panduan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings_outlined),
+              title: Text("Pengaturan Akun"),
+              onTap: () {
+                Navigator.pushNamed(context, "/pengaturan");
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined),
+              title: Text("Log Out"),
+              onTap: () {
+                Navigator.pushNamed(context, "/login");
+              },
+            ),
+          ],
+        ),
       ),
 
       body: SingleChildScrollView(
@@ -229,13 +320,13 @@ class JurnalPembiasaan extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 200,
+                // height: 200,
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: ListView(
+                child: Column(
                   children: [
                     Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
@@ -247,7 +338,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 12 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -268,7 +359,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 13 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -279,7 +370,7 @@ class JurnalPembiasaan extends StatelessWidget {
                       ),
                     ),
 
-                                        Card(
+                    Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                       elevation: 2,
                       child: ExpansionTile(
@@ -289,7 +380,7 @@ class JurnalPembiasaan extends StatelessWidget {
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text("Klik untuk melihat detail"),
+                        subtitle: Text("Tanggal, 13 Januari 2025"),
                         childrenPadding: EdgeInsets.all(16),
                         children: [
                           // tampilData("Pekerjaan", "Project Flutter"),
@@ -302,33 +393,62 @@ class JurnalPembiasaan extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  borderRadius: BorderRadius.circular(8),
-                  // border: Border.all(color: Colors.),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[700],
+                    borderRadius: BorderRadius.circular(8),
+                    // border: Border.all(color: Colors.),
+                  ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Tambah Pekerjaan",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Tambah Pekerjaan",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white
-                      ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PekerjaanPage()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 5),
+                        Text(
+                          "Lainnya",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.blue,
+                          size: 15,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               SizedBox(height: 30),
@@ -341,13 +461,13 @@ class JurnalPembiasaan extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 200,
+                // height: 200,
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: ListView(
+                child: Column(
                   children: [
                     Card(
                       margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
@@ -411,33 +531,62 @@ class JurnalPembiasaan extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  borderRadius: BorderRadius.circular(8),
-                  // border: Border.all(color: Colors.),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blue[700],
+                      borderRadius: BorderRadius.circular(8),
+                      // border: Border.all(color: Colors.),
                     ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Tambah Materi",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "Tambah Materi",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MateriPage()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 5),
+                        Text(
+                          "Lainnya",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.blue,
+                          size: 15,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 7),
               Row(
